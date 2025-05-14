@@ -11,7 +11,7 @@ describe('Cypress application', () => {
     });
   });
 
-  it('should have the ability to assert scheduled allert', () => {
+  it('should have the ability to assert scheduled alert', () => {
     cy.clock();
     cy.get('button[id="timerAlertButton"]').click();
     cy.tick(5000);
@@ -39,11 +39,10 @@ describe('Cypress application', () => {
   });
 
   it('should have the ability to enter text to alert', () => {
-    cy.get('button[id="promtButton"]').click();
     cy.window().then((win) => {
       cy.stub(win, 'prompt').returns('YourName');
-      cy.get('#promtButton').click();
     });
+    cy.get('button[id="promptButton"]').click();
     cy.get('#promptResult').should('have.text', 'You entered YourName');
   });
 });
